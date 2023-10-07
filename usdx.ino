@@ -160,24 +160,24 @@ Global variables use 1499 bytes (73%) of dynamic memory, leaving 549 bytes for l
 //#define MY_PREFIX ""  // No prefix, use this line by removing the //, add below to replica line.
 #define MY_PREFIX ""    // Add visiting country prefix here
 
-#define MY_NAME "ROB"   // <---- *** ADD YOUR NAME HERE FOR CW MESSAGES
+#define MY_NAME "HANS"   // <---- *** ADD YOUR NAME HERE FOR CW MESSAGES
 #endif
 #define CALLSIGN_LENGTH 5       // Change length to match your callsign but remember the LCD isn't very wide!
 
 // *** MEMORY LIMITATION OF ATMEGA328 *** This means you may have to mix and match functions option defines.  CAT requires considerable memory, so use only if needed.
 
 // If your dial goes the wrong way, change SWAP_ROTARY
-#if defined(RED_CORNERS) || defined(BLACK_BRICK)
+//#if defined(RED_CORNERS) || defined(BLACK_BRICK)
 // SWAP_ROTARY is isually required for Red Corners unless Rotary type changed, like mine!
-#ifdef MY_RED_CORNERS
-#define REVERSE_BAND_CHANGE	1	//If your freq. change is correct, but band jump goes backwards, define REVERSE_BAND_CHANGE
-#else
-#define SWAP_ROTARY    1   // Swap rotary direction (enable for WB2CBA-uSDX)  NOTE:  To enable SWAP without RED_CORNERS enabled, comment out the lines above and below with // character, i.e. //#ifdef RED_CORNERS and //#endif
+//#ifdef MY_RED_CORNERS
 //#define REVERSE_BAND_CHANGE	1	//If your freq. change is correct, but band jump goes backwards, define REVERSE_BAND_CHANGE
-#endif
+//#else
+//#define SWAP_ROTARY    1   // Swap rotary direction (enable for WB2CBA-uSDX)  NOTE:  To enable SWAP without RED_CORNERS enabled, comment out the lines above and below with // character, i.e. //#ifdef RED_CORNERS and //#endif
+//#define REVERSE_BAND_CHANGE	1	//If your freq. change is correct, but band jump goes backwards, define REVERSE_BAND_CHANGE
+//#endif
 // :( No space for SWR with both CW Msgs and CAT
 #define SWR_METER      1   // Supports SWR meter with bridge on A6/A7 (LQPF ATMEGA328P) by Alain, K1FM, see: https://groups.io/g/ucx/message/6262 and https://groups.io/g/ucx/message/6361
-#endif
+//#endif
 
 //***************** TRUSDX FEATURES
 #if defined(TRUSDX)
@@ -192,7 +192,7 @@ Global variables use 1499 bytes (73%) of dynamic memory, leaving 549 bytes for l
 #endif
 //*****************
 
-#define LPF_SWITCHING_DL2MAN_USDX_REV3 1    // Default
+//#define LPF_SWITCHING_DL2MAN_USDX_REV3 1    // Default
 //#define LPF_SWITCHING_DL2MAN_USDX_REV3_NOLATCH 1    // NOTE: CHANGE IF THIS VERSION LATCHES
 
 #if defined(BLACK_BRICK)
@@ -201,7 +201,7 @@ Global variables use 1499 bytes (73%) of dynamic memory, leaving 549 bytes for l
 
 //#define FAST_AGC         1   // Adds fast AGC option (good for CW) Slow mode not recommended.  Remove for CAT if memory errors.
 
-#define CAT              1   // CAT-interface - OTHER OPTIONS, SUCH AS CW_MESSAGES and KEEP_BAND_DATA MAY TO BE DISABLED TO MAKE SPACE FOR CAT
+//#define CAT              1   // CAT-interface - OTHER OPTIONS, SUCH AS CW_MESSAGES and KEEP_BAND_DATA MAY TO BE DISABLED TO MAKE SPACE FOR CAT
 //#define CAT_EXT        1   // Extended CAT support: remote button and screen control commands over CAT
 //#define CAT_STREAMING    1   // Streams audio and IQ, only 8KHz b/w, & needs faster 115200 baud RS232
 #define CAT_FAST         1   // Uses faster 115200 baud (can be changed to 57600), else 38400, 8, 1, N.
@@ -263,17 +263,17 @@ Global variables use 1499 bytes (73%) of dynamic memory, leaving 549 bytes for l
 
 // NOTE: Make sure you have the correct xtal frequency enabled. This is the xtal near the SI5351/SI3253 chip, not the one near the Atmega MCU.
 //#define F_XTAL    27005000   // 27MHz SI5351 crystal
-//#define F_XTAL  25004000   // 25MHz SI5351 crystal  (enable for WB2CBA-uSDX, SI5351 break-out board or uSDXDuO)
-#if defined(RED_CORNERS) || defined(BLACK_BRICK)
+#define F_XTAL  25004000   // 25MHz SI5351 crystal  (enable for WB2CBA-uSDX, SI5351 break-out board or uSDXDuO)
+//#if defined(RED_CORNERS) || defined(BLACK_BRICK)
 //#ifdef RED_CORNERS
-#define F_XTAL  25000000   // 25MHz SI5351 crystal  (enable for 25MHz TCXO)
-#else
-#ifdef MY_RED_CORNERS
-#define F_XTAL  27001400
-#else
-#define F_XTAL  27000000   // !!!! SET YOUR EXACT XTAL FREQ OR 27000000 !!!!  27MHz usually on black bricks, Red Buttons (27001400 is my calibration offset!!!) and White buttons versions
-#endif
-#endif
+//#define F_XTAL  25000000   // 25MHz SI5351 crystal  (enable for 25MHz TCXO)
+//#else
+//#ifdef MY_RED_CORNERS
+//#define F_XTAL  27001400
+//#else
+//#define F_XTAL  27000000   // !!!! SET YOUR EXACT XTAL FREQ OR 27000000 !!!!  27MHz usually on black bricks, Red Buttons (27001400 is my calibration offset!!!) and White buttons versions
+//#endif
+//#endif
 
 // GW8RDI NOTE: Enable to have battery voltage shown on the LCD.
 // GW8RDI WARNING!!! The problem with the original code is that it switches the ADC VREF up to 5V to read the bat, V, this causes some noise on the IQ sampling which enters the audio,
@@ -282,7 +282,7 @@ Global variables use 1499 bytes (73%) of dynamic memory, leaving 549 bytes for l
 //#define VSS_METER      1   // Supports Vss measurement (as s-meter option), requires resistor of 1M between 12V and pin 26 (PC3)
 
 //#define QCX            1   // Supports older (non-SDR) QCX HW modifications (QCX, QCX-SSB, QCX-DSP with I/Q alignment-feature)
-//#define OLED_SSD1306   1   // OLED display (SSD1306 128x32 or 128x64), connect SDA (PD2), SCL (PD3)
+#define OLED_SSD1306   1   // OLED display (SSD1306 128x32 or 128x64), connect SDA (PD2), SCL (PD3)
 //#define OLED_SH1106    1   // OLED display (SH1106 1.3" inch display), connect SDA (PD2), SCL (PD3), NOTE that this display is pretty slow
 //#define LCD_I2C        1   // LCD with I2C (PCF8574 module          ), connect SDA (PD2), SCL (PD3), NOTE that this display is pretty slow
 //#define LPF_SWITCHING_DL2MAN_USDX_REV3           1   // Enable 8-band filter bank switching:     latching relays wired to a TCA/PCA9555 GPIO extender on the PC4/PC5 I2C bus; relays are using IO0.0 as common (ground), IO1.0..7 used by the individual latches K0-7 switching respectively LPFs for 10m, 15m, 17m, 20m, 30m, 40m, 60m, 80m
@@ -290,7 +290,7 @@ Global variables use 1499 bytes (73%) of dynamic memory, leaving 549 bytes for l
 //#define LPF_SWITCHING_DL2MAN_USDX_REV2         1   // Enable 5-band filter bank switching:     latching relays wired to a TCA/PCA9555 GPIO extender on the PC4/PC5 I2C bus; relays are using IO0.1 as common (ground), IO0.3, IO0.5, IO0.7, IO1.1, IO1.3 used by the individual latches K1-5 switching respectively LPFs for 20m, 30m, 40m, 60m, 80m
 //#define LPF_SWITCHING_DL2MAN_USDX_REV2_BETA    1   // Enable 5-band filter bank switching:     latching relays wired to a PCA9539PW   GPIO extender on the PC4/PC5 I2C bus; relays are using IO0.1 as common (ground), IO0.3, IO0.5, IO0.7, IO1.1, IO1.3 used by the individual latches K1-5 switching respectively LPFs for 20m, 30m, 40m, 60m, 80m
 //#define LPF_SWITCHING_DL2MAN_USDX_REV1         1   // Enable 3-band filter bank switching:     latching relays wired to a PCA9536D    GPIO extender on the PC4/PC5 I2C bus; relays are using IO0 as common (ground), IO1-IO3 used by the individual latches K1-3 switching respectively LPFs for 20m, 40m, 80m
-//#define LPF_SWITCHING_WB2CBA_USDX_OCTOBAND     1   // Enable 8-band filter bank switching: non-latching relays wired to a MCP23008    GPIO extender on the PC4/PC5 I2C bus; relays are using GND as common (ground), GP0..7 used by the individual latches K1-8 switching respectively LPFs for 80m, 60m, 40m, 30m, 20m, 17m, 15m, 10m
+#define LPF_SWITCHING_WB2CBA_USDX_OCTOBAND     1   // Enable 8-band filter bank switching: non-latching relays wired to a MCP23008    GPIO extender on the PC4/PC5 I2C bus; relays are using GND as common (ground), GP0..7 used by the individual latches K1-8 switching respectively LPFs for 80m, 60m, 40m, 30m, 20m, 17m, 15m, 10m
 //#define LPF_SWITCHING_PE1DDA_USDXDUO           14  // Enable 2-band filter bank switching: non-latching relay  wired to pin PD5 (pin 11); specify as value the frequency in MHz for which (and above) the relay should be altered (e.g. put 14 to enable the relay at 14MHz and above to use the 20m LPF).
 #define SI5351_ADDR   0x60   // SI5351A I2C address: 0x60 for SI5351A-B-GT, Si5351A-B04771-GT, MS5351M; 0x62 for SI5351A-B-04486-GT; 0x6F for SI5351A-B02075-GT; see here for other variants: https://www.silabs.com/TimingUtility/timing-download-document.aspx?OPN=Si5351A-B02075-GT&OPNRevision=0&FileType=PublicAddendum
 //#define F_MCU   16000000   // 16MHz ATMEGA328P crystal (enable for unmodified Arduino Uno/Nano boards with 16MHz crystal). You may change this value to any other crystal frequency (up to 28MHz may work)
@@ -7117,4 +7117,3 @@ int8_t updateMode() // GW8RDI mod - relocated to function
   return 1;
 }
 */
-
